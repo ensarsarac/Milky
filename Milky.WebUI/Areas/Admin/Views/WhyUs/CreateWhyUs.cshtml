@@ -1,0 +1,44 @@
+﻿@model CreateWhyUsDto
+@{
+    ViewData["Title"] = "CreateWhyUs";
+    ViewData["InnerTitle"] = "Neden Biz Alanı";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="white_shd full margin_bottom_30">
+            <div class="full graph_head">
+                <div class="heading1 margin_0">
+                    <h2>Yeni Neden Biz Alanı Ekle</h2>
+                </div>
+            </div>
+            <div class="table_section padding_infor_info">
+                <form method="post">
+                    <div class="form-group">
+                        <label class="form-label">Başlık</label>
+                        <input type="text" class="form-control" name="Title" placeholder="Slider Başlığı" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Madde 1</label>
+                        <input type="text" class="form-control" name="Article1" placeholder="Madde 1" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Madde 2</label>
+                        <input type="text" class="form-control" name="Article2" placeholder="Madde 2" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Madde 3</label>
+                        <input type="text" class="form-control" name="Article3" placeholder="Madde 3" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Açıklama</label>
+                        <textarea type="text" class="form-control" name="Description" placeholder="Açıklaması"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline-success">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

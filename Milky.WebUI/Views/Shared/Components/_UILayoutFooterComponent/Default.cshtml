@@ -1,0 +1,24 @@
+﻿@model ResultContactInfoDto
+<div class="container-fluid bg-dark footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Ofisimiz</h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>@Model.Address</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>@Model.Phone</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>@Model.Email</p>
+                @await Component.InvokeAsync("_SocialMediaComponent")
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Hızlı Linkler</h5>
+                <a class="btn btn-link" href="/About/Index">Hakkımızda</a>
+                <a class="btn btn-link" href="/Contact/Index">İletişim</a>
+                <a class="btn btn-link" href="/Service/Index">Hizmetler</a>
+                <a class="btn btn-link" href="/Product/Index">Ürünler</a>
+                <a class="btn btn-link" href="/About/Index">Destek</a>
+            </div>
+            @await Component.InvokeAsync("_OpenHoursComponent")
+            @await Component.InvokeAsync("_FooterNewsletterComponent")
+        </div>
+    </div>
+</div>

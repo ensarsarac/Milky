@@ -1,0 +1,76 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Milky.WebUI.Areas.Admin.Dtos.WhyUsDtos;
+using Newtonsoft.Json;
+using System.Text;
+
+namespace Milky.WebUI.Areas.Admin.Controllers
+{
+    [Area("Admin")]
+    public class WhyUsController : Controller
+    {
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public WhyUsController(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var res = await client.GetAsync("https://localhost:7226/api/WhyUs");
+            var readData = await res.Content.ReadAsStringAsync();
+            var jsonData = JsonConvert.DeserializeObject<List<ResultWhyUsDto>>(readData);
+            return View(jsonData);
+        }
+        public async Task<IActionResult> DeleteWhyUs(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            await client.DeleteAsync("https://localhost:7226/api/WhyUs?id=" + id);
+            return RedirectToAction("Index");
+        }
+        public IActionResult CreateWhyUs()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateWhyUs(CreateWhyUsDto createWhyUsDto)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createWhyUsDto);
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var res = await client.PostAsync("https://localhost:7226/api/WhyUs", content);
+            if (res.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(createWhyUsDto);
+        }
+        public async Task<IActionResult> UpdateWhyUs(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var res = await client.GetAsync("https://localhost:7226/api/WhyUs/GetWhyUs?id=" + id);
+            if (res.IsSuccessStatusCode)
+            {
+                var readData = await res.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateWhyUsDto>(readData);
+                return View(values);
+            }
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateWhyUs(UpdateWhyUsDto updateWhyUs)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateWhyUs);
+            var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var res = await client.PutAsync("https://localhost:7226/api/WhyUs", content);
+            if (res.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+
+            }
+            return View(updateWhyUs);
+        }
+    }
+}

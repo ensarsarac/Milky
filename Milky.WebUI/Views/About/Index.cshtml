@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    ViewData["MainTitle"] = "Hakkımızda";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+@await Component.InvokeAsync("_AboutUsComponent")
+@await Component.InvokeAsync("_BannerComponent")
+@await Component.InvokeAsync("_TeamComponent")
+

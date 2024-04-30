@@ -1,0 +1,38 @@
+﻿@model UpdateTeamSocialMediaDto
+@{
+    ViewData["Title"] = "UpdateTeamSocialMedia";
+    ViewData["InnerTitle"] = "Çalışanlar Sosyal Medya Hesapları Alanı";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="white_shd full margin_bottom_30">
+            <div class="full graph_head">
+                <div class="heading1 margin_0">
+                    <h2>Sosyal Medya Hesabı Güncelle</h2>
+                </div>
+            </div>
+            <div class="table_section padding_infor_info">
+                <form method="post">
+                    <input type="hidden" asp-for="TeamSocialMediaId" />
+                    <input type="hidden" asp-for="TeamId" />
+                    <div class="form-group">
+                        <label class="form-label">Platform</label>
+                        <input type="text" class="form-control" asp-for="Platform" placeholder="Platform" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Icon Link</label>
+                        <input type="text" class="form-control" asp-for="Icon" placeholder="Icon Link" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Url Link</label>
+                        <input type="text" class="form-control" asp-for="Url" placeholder="Url Link" />
+                    </div>
+                    <button type="submit" class="btn btn-outline-warning">Güncelle</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

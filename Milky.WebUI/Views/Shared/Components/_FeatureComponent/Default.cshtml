@@ -1,0 +1,17 @@
+﻿@model ResultWhyUsDto
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <p class="section-title bg-white text-start text-primary pe-3">Neden Biz!</p>
+                <h1 class="mb-4">@Model.Title</h1>
+                <p class="mb-4">@Model.Description</p>
+                <p><i class="fa fa-check text-primary me-3"></i>@Model.Article1</p>
+                <p><i class="fa fa-check text-primary me-3"></i>@Model.Article2</p>
+                <p><i class="fa fa-check text-primary me-3"></i>@Model.Article3</p>
+                <a class="btn btn-secondary rounded-pill py-3 px-5 mt-3" href="/About/Index">Daha Fazlası</a>
+            </div>
+            @await Component.InvokeAsync("_FeatureStatisticComponent")
+        </div>
+    </div>
+</div>

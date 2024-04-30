@@ -1,0 +1,55 @@
+﻿@model CreateMessageDto
+@{
+    ViewData["Title"] = "Index";
+    ViewData["MainTitle"] = "İletişim";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="section-title bg-white text-center text-primary px-3">Bizimle İletişime Geçin</p>
+            <h1 class="mb-5">Herhangi Bir Sorunuz Varsa Lütfen Bize Ulaşın</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <h3 class="mb-4">
+                    İşlevsel bir iletişim formuna mı ihtiyacınız var?
+                </h3>
+               
+                <form method="post" action="/Contact/SendMessage">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="NameSurname" placeholder="Adınız Soyadınız">
+                                <label for="name">Adınız Soyadınız</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" name="Email" placeholder="Mail Adresiniz">
+                                <label for="email">Mail Adresiniz</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" name="Subject" placeholder="Konu">
+                                <label for="subject">Konu</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" name="Content" placeholder="Bir mesaj bıraın.." id="message" style="height: 250px"></textarea>
+                                <label for="message">Mesajınız</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-secondary rounded-pill py-3 px-5" type="submit">Mesaj Gönder</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            @await Component.InvokeAsync("_ContactDetailsComponent")
+        </div>
+    </div>
+</div>

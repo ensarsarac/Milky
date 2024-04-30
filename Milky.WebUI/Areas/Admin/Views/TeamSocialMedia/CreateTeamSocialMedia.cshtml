@@ -1,0 +1,36 @@
+﻿@model CreateTeamSocialMediaDto
+@{
+    ViewData["Title"] = "CreateTeamSocialMedia";
+    ViewData["InnerTitle"] = "Çalışanlar Sosyal Medya Hesapları Alanı";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="white_shd full margin_bottom_30">
+            <div class="full graph_head">
+                <div class="heading1 margin_0">
+                    <h2>Yeni Sosyal Medya Hesabı Ekle</h2>
+                </div>
+            </div>
+            <div class="table_section padding_infor_info">
+                <form method="post">
+                    <div class="form-group">
+                        <label class="form-label">Platform</label>
+                        <input type="text" class="form-control" name="Platform" placeholder="Platform" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Icon Link</label>
+                        <input type="text" class="form-control" name="Icon" placeholder="Icon Link" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Url Link</label>
+                        <input type="text" class="form-control" name="Url" placeholder="Url Link" />
+                    </div>
+                    <button type="submit" class="btn btn-outline-success">Kaydet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

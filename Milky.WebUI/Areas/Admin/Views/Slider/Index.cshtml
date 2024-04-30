@@ -1,0 +1,70 @@
+﻿@model List<ResultSliderDto>
+@{
+    ViewData["Title"] = "Index";
+    ViewData["InnerTitle"] = "Slider Alanı";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="white_shd full margin_bottom_30">
+            <div class="full graph_head">
+                <div class="heading1 margin_0">
+                    <h2>Slider Listesi</h2>
+                </div>
+            </div>
+            <div class="table_section padding_infor_info">
+                <div class="table-responsive-sm">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Başlık</th>
+                                <th>Görsel URl</th>
+                                <th>Açıklama</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td>@count</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.ImageUrl</td>
+                                    <td>@item.Description</td>
+                                    <td><button onclick="areyousure(this)" id="@item.SliderId" class="btn btn-outline-danger">Sil</button></td>
+                                    <td><a href="/Admin/Slider/UpdateSlider/@item.SliderId" class="btn btn-outline-warning">Güncelle</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    <a href="/Admin/Slider/CreateSlider" class="btn btn-outline-primary">Yeni Slider Ekle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function areyousure(button) {
+            var id = button.getAttribute("id");
+            Swal.fire({
+                title: "Silmek istediğinize emin misiniz?",
+                text: "Bu işlemi geri alamazsınız",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Evet, Sil!",
+                cancelButtonText: "İptal"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/Admin/Slider/DeleteSlider/" + id;
+                }
+            });
+        }
+    </script>
+

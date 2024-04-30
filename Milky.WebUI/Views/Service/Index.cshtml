@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    ViewData["MainTitle"] = "Hizmetlerimiz";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+@await Component.InvokeAsync("_ServiceComponent")
+@await Component.InvokeAsync("_FeatureComponent")
+

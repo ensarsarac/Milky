@@ -1,0 +1,13 @@
+﻿@model List<ResultGalleryDto>
+<div class="container">
+<div class="row">
+	@foreach (var item in Model)
+	{
+		<div class="col-4 wow fadeInUp" data-wow-delay="0.5s">
+			<a href="@item.ImageUrl">
+				<img class="w-100" style="height:400px;" src="@item.ImageUrl" alt="">
+			</a>
+		</div>
+	}
+</div>
+</div>

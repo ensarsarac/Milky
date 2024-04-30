@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("_UILayoutHeadComponent")
+
+<body>
+    @await Component.InvokeAsync("_UILayoutSpinnerComponent")
+    @await Component.InvokeAsync("_UILayoutTopBarComponent")
+    @await Component.InvokeAsync("_UILayoutNavbarComponent")
+    @await Component.InvokeAsync("_UILayoutPageHeaderComponent")
+    @RenderBody()
+    @await Component.InvokeAsync("_UILayoutFooterComponent")
+    @await Component.InvokeAsync("_UILayoutSubFooterComponent")
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+    @await Component.InvokeAsync("_UILayoutScriptsComponent")
+</body>
+</html>
